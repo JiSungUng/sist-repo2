@@ -10,6 +10,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<%
+//로그인에 대한 세션값 제거
+session.removeAttribute("loginok");
 
+//로그인메인으로 이동.. 항상 메인을 이용해서 이동..
+response.sendRedirect("loginmain.jsp");
+%>
 </body>
 </html>
