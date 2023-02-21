@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class DbConnect {
 
 	static final String MYSQLDRIVER="com.mysql.cj.jdbc.Driver";
-	static final String MYSQL_URL="jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Seoul";
+	static final String MYSQL_URL="jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
 	
 	//생성자
 	public DbConnect() {
