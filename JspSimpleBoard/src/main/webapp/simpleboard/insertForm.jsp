@@ -43,7 +43,7 @@ function readURL(input) {
 	<tr>
 		<th style="width:100px;" bgcolor="lightgray">제목</th>
 		<td>
-		<input type="text" name="subject" style="width:200px;" class="form-control" placeholder="writer" autofocus="autofocus" required="required">
+		<input type="text" name="subject" style="width:200px;" class="form-control" placeholder="제목" autofocus="autofocus" required="required">
 		</td>
 	</tr>
 	
@@ -56,20 +56,20 @@ function readURL(input) {
 	<tr>
 		<th style="width:100px;" bgcolor="lightgray">비밀번호</th>
 		<td>
-		<input type="text" name="pass" style="width:200px;" class="form-control" placeholder="제목" required="required"
+		<input type="text" name="pass" style="width:200px;" class="form-control" placeholder="비밀번호(숫자4자리)" required="required"
 		pattern="[0-9]{4}">
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2">
-		<textarea style="width:500px;height: 200px;" class="form-control" name="content" required="required "></textarea>
+		<textarea style="width:500px;height: 200px;" class="form-control" name="content" required="required"></textarea>
 		</td>
 		
 	</tr>
 		<tr>
-		<td>
+		<td colspan="2" align="center">
 			<input type="submit" class="btn btn-info" value="저장하기">
-			<input type="submit" class="btn btn-info" value="목록으로" onclick="location.hredf='boardList.jsp'">
+			<input type="submit" class="btn btn-info" value="목록으로" onclick="location.href='boardList.jsp'">
 		</td>
 		</tr>
 	
