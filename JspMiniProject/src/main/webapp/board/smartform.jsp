@@ -52,7 +52,7 @@
 				
 				<button type="button" class="btn btn-warning"
 					style="width: 120px;"
-					onclick="location.href='main.jsp?go=smart/smartlist.jsp'">목록</button>
+					onclick="location.href='index.jsp?main=board/boardlist.jsp'">목록</button>
 			</td>
 		</tr>
 		
@@ -107,7 +107,6 @@ function pasteHTML(filepath){
 
 </body>
 </html>
-
 
 
 
