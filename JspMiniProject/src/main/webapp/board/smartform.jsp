@@ -19,7 +19,7 @@
 	charset="utf-8"></script>	
 </head>
 <body>
-<form action="smart/smartaction.jsp" method="post">
+<form action="board/addaction.jsp" method="post">
 	<table class="table table-bordered" style="width: 800px;margin-left: 100px;">
 		<caption><h3>스마트 포토 게시판</h3></caption>
 		<tr>
