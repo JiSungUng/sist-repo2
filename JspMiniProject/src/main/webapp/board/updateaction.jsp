@@ -1,56 +1,46 @@
-<%@page import="javax.security.auth.Subject"%>
-<%@page import="java.io.Writer"%>
 <%@page import="data.dao.SmartDao"%>
 <%@page import="data.dto.SmartDto"%>
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Edu+VIC+WA+NT+Beginner:wght@600&family=Gamja+Flower&family=Single+Day&family=Jua&family=Nanum+Pen+Script&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+</head>
+<body>
 <%
-   //db에 저장할 id 가져오기
-   String myid=(String)session.getAttribute("myid");
+  //엔코딩
+  request.setCharacterEncoding("utf-8");
 
-	//이미지가 업로드되는 실제경로
-	String realPath=getServletContext().getRealPath("/save");
-	System.out.println(realPath);
-	
-	int uploadSize=1024*1024*2; //2mb
-	MultipartRequest multi=null;
-	
-	try{
-	multi=new MultipartRequest(request,realPath,uploadSize,"utf-8",
-			new DefaultFileRenamePolicy());
-	
-	//multi변수로 모든 폼데이타 읽어오기
-	String num=multi.getParameter("num");
-	String writer=multi.getParameter("writer");
-	String subject=multi.getParameter("subject");
-	String content=multi.getParameter("content");
-	
-	//페이지 번호 읽기
-	String currentPage=multi.getParameter("currentPage");
-	
-	//dao
-	SmartDao dao=new SmartDao();
-	
-	
-	
-	//dto에 저장
-	SmartDto dto=new SmartDto();
-	dto.setNum(num);
-	dto.setWriter(writer);
-	dto.setSubject(subject);
-	dto.setContent(content);
-	
-	//update
-	dao.updateSmart(dto);
-	
-	//방명록 목록으로 이동(수정했던페이지로 이동)
-	response.sendRedirect("../index.jsp?main=board/boardlist.jsp?currentPage="+currentPage);
+//데이타 읽어서 dto읽기
+SmartDto dto=new SmartDto();
 
-	
-	}catch(Exception e){
-		
-		System.out.println("업로드 오류:"+e.getMessage());
-	}
+//현재페이지
+String currentPage=request.getParameter("currentPage");
+
+String num=request.getParameter("num");
+String writer=request.getParameter("writer");
+String subject=request.getParameter("subject");
+String content=request.getParameter("content");
+
+dto.setNum(num);
+dto.setWriter(writer);
+dto.setSubject(subject);
+dto.setContent(content);
+
+
+//dao선언후 update호출
+SmartDao dao=new SmartDao();
+dao.updateSmart(dto);
+
+//디테일뷰
+response.sendRedirect("../index.jsp?main=board/detailview.jsp?num="+num+"&currentPage="+currentPage);
 %>
+</body>
+</html>
