@@ -110,21 +110,3 @@ function pasteHTML(filepath){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

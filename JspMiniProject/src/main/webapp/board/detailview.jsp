@@ -13,18 +13,139 @@
         rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
 span.day{
   color: gray;
   font-size: 0.8em;
 }
+
+div.alist{
+  margin-left: 20px;
+}
+
+div.alist span.aday{
+  float: right;
+  font-size: 0.8em;
+  color: gray;
+  
+}
+
+button.adel{
+   margin-left: 10px;
+}
+button.amod{
+   margin-left: 5px;
+}
+
 </style>
 
 <script type="text/javascript">
 $(function(){
 	
 	//처음에 시작시 리스트 호출
+	list();
 	
+	//댓글부분에 넣을 num출력호출
+	var num=$("#num").val();
+	//alert(num);
+	
+	//insert
+	$("#btnanswer").click(function(){
+		
+		var nickname=$("#nickname").val();
+		var content=$("#content").val();
+		
+		$.ajax({
+			
+			type:"get",
+			url:"smartanswer/insertanswer.jsp",
+			dataType:"html",
+			data:{"num":num,"nickname":nickname,"content":content},
+			success:function(){
+				
+				//alert("success");
+				//기존입력값 지우기
+				$("#nickname").val(" ");
+				$("#content").val('');
+				
+				//댓글추가한후 댓글목록 다시출력
+				list();
+			}
+			
+		});
+		
+	});
+	
+	
+	//삭제
+	
+	$(document).on("click",".adel",function(){
+		
+		var a=confirm("댓글을 삭제하려면 [확인]을 눌러주세요");
+		
+		var idx=$(this).attr("idx");
+		//alert(idx);
+		
+		if(a){
+			$.ajax({
+				
+				type:"get",
+				url:"smartanswer/deleteanswer.jsp",
+				dataType:"html",
+				data:{"idx":idx},
+				success:function(){
+					
+					list();
+				}
+			});
+		}
+	});
+	
+	
+	//수정폼 띠우기..모달
+	$(document).on("click",".amod",function(){
+		
+		 idx=$(this).attr("idx");
+		//alert(idx);
+		
+		$.ajax({
+			
+			type:"get",
+			url:"smartanswer/jsonupdateform.jsp",
+			dataType:"json",
+			data:{"idx":idx},
+			success:function(res){
+				//수정폼에 닉네임,내용띄우기
+				$("#unickname").val(res.nickname);
+				$("#ucontent").val(res.content);
+			}
+			
+		});
+		
+		$("#myModal").modal();
+	});
+	
+	
+	//수정
+	$(document).on("click","#btnupdate",function(){
+		
+		var nickname=$("#unickname").val();
+		var content=$("#ucontent").val();
+		
+		//alert(nickname+","+content);
+		
+		$.ajax({
+			
+			type: "get",
+			url:"smartanswer/updateanswer.jsp",
+			dataType:"html",
+			data:{"idx":idx,"nickname":nickname,"content":content},
+			success:function(){
+				list();
+			}
+		});
+	});
 	
 	
 });
@@ -33,7 +154,33 @@ $(function(){
 //list 사용자정의함수
 function list()
 {
+	console.log("list num="+$("#num").val());
 	
+	$.ajax({
+		
+		type:"get",
+		url:"smartanswer/listanswer.jsp",
+		dataType:"json",
+		data:{"num":$("#num").val()},
+		success:function(res){
+			
+			//댓글갯수출력
+			$("b.acount>span").text(res.length);
+			
+			var s="";
+			
+			$.each(res,function(idx,item){
+				
+				s+="<div>"+item.nickname+":  "+item.content;
+				s+="<span class='aday'>"+item.writeday+"</sapn>";
+				s+="<button type='button' idx="+item.idx+" class='btn btn-info btn-xs adel'>삭제</button>";
+				s+="<button type='button' idx="+item.idx+" class='btn btn-success btn-xs amod'>수정</button>";
+				s+="</div>";
+			});
+			
+			$("div.alist").html(s);
+		}
+	});
 }
 
 </script>
@@ -57,7 +204,10 @@ function list()
 %>
 
 <div style="margin: 30px 30px;">
-  <table class="table table-bordered" style="width: 500px;">
+
+<input type="hidden" id="num" value="<%=num%>">
+
+  <table class="table table-bordered" style="width: 600px;">
     <caption>
             <h3><b><%=dto.getSubject() %></b></h3></caption>
        
@@ -79,7 +229,7 @@ function list()
        <!-- 댓글 -->
        <tr>
          <td>
-            <b class="acount">댓글 <span>0</span></b>
+            <b class="acount">댓글 <span style="color: red; font-weight: bold;">0</span></b>
             <div class="alist">
                댓글목록
             </div>
@@ -120,6 +270,36 @@ function list()
        </tr>
   </table>
 </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">댓글수정</h4>
+        </div>
+        
+        
+        <div class="modal-body">
+          <b>닉네임: </b>
+          <input type="text" id="unickname" style="width: 100px;">
+          <b>댓글내용: </b>
+          <input type="text" id="ucontent" style="width: 200px;">
+        </div>
+        
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"
+          id="btnupdate">댓글수정</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
 
 
 <script type="text/javascript">
