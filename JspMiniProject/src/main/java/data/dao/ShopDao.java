@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
+import data.dto.CartDto;
 import data.dto.MemberDto;
 import data.dto.ShopDto;
 import mysql.db.DbConnect;
@@ -82,4 +83,70 @@ public class ShopDao {
 		
 		return list;
 	}
+	
+	
+	//shopnum의 dto얻기
+	public ShopDto getShopData(String shopnum)
+	{
+		ShopDto dto=new ShopDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from shop where shopnum=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, shopnum);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				dto.setShopnum(rs.getString("shopnum"));
+				dto.setCategory(rs.getString("category"));
+				dto.setSangpum(rs.getString("sangpum"));
+				dto.setPhoto(rs.getString("photo"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setIpgoday(rs.getString("ipgoday"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		
+		return dto;
+		
+	}
+	//Cart insert
+	public void insertCart(CartDto dto)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="insert into cart values(null,?,?,?,now())";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getShopnum());
+			pstmt.setString(2, dto.getNum());
+			pstmt.setInt(3, dto.getCnt());
+			
+			
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
+	
 }
