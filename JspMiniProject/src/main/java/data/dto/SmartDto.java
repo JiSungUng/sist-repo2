@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 public class SmartDto {
 
-	
 	private String num;
 	private String writer;
 	private String subject;
@@ -12,7 +11,8 @@ public class SmartDto {
 	private int readcount;
 	private Timestamp writeday;
 	
-	private int answercount;//댓글 개수 저장
+	private int answercount; //댓글개수저장 
+	
 	
 	public String getNum() {
 		return num;
@@ -56,7 +56,4 @@ public class SmartDto {
 	public void setAnswercount(int answercount) {
 		this.answercount = answercount;
 	}
-	
-	
-	
 }

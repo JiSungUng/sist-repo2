@@ -8,7 +8,6 @@ public class CartDto {
 	private String shopnum;
 	private String num;
 	private int cnt;
-	private Timestamp cartday;
 	
 	
 	public String getIdx() {
@@ -41,7 +40,7 @@ public class CartDto {
 	public void setCartday(Timestamp cartday) {
 		this.cartday = cartday;
 	}
-	
+	private Timestamp cartday;
 	
 	
 }

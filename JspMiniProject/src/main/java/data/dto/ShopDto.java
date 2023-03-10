@@ -9,6 +9,7 @@ public class ShopDto {
 	private int price;
 	private String ipgoday;
 	
+	
 	public String getShopnum() {
 		return shopnum;
 	}
@@ -45,7 +46,5 @@ public class ShopDto {
 	public void setIpgoday(String ipgoday) {
 		this.ipgoday = ipgoday;
 	}
-	
-	
 	
 }
