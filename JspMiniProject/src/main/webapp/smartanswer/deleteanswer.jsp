@@ -7,6 +7,6 @@
     //dao
     SmartAnswerDao dao=new SmartAnswerDao();
     //delete
-    dao.deleteSmartAnswer(idx);
+    dao.deleteAnswer(idx);
 	
 %>
