@@ -19,13 +19,13 @@ div.layout{
 }
 
 div.title{
-
+	padding-top:10px;
 	width: 100%;
-	height: 100px;
+	height: 200px;
 	line-height: 80px;
 	font-size: 75px;
 	text-align: center;
-	background:green;
+	background: #0b214e;
 	font-wight:bold;
 }
 
