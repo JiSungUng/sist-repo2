@@ -18,6 +18,8 @@ button {
 div{
 font-size:20px;
 }
+
+
 </style>
 
 
@@ -33,8 +35,8 @@ font-size:20px;
    
    <div style="float: right; padding-right:80px">
    	<b style="color:white; font-size:30px;">???님</b><br>
-    	<button type="button" class="btn btn-danger btn-sm" id="myshop" style="font-size:30px;">장바구니</button>
-    	<button type="button" class="btn btn-danger btn-sm" id="mypage" style="font-size:30px;">마이페이지</button>
+    	<button type="button" class="btn btn-primary" id="myshop" style="font-size:30px;">장바구니</button>
+    	<button type="button" class="btn btn-primary" id="mypage" style="font-size:30px;">마이페이지</button>
    </div>
    
      
