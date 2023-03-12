@@ -9,7 +9,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-	
+button {
+  width: 150px;
+  height: 50px;
+  font-size :15px;
+}
+
+div{
+font-size:20px;
+}
 </style>
 
 
@@ -19,8 +27,15 @@
    String root=request.getContextPath();
 %>
 <body>
+
    <a href="<%=root%>" style="color: red;">
-   <img src="image/로고.png" style="max-width: 400px; max-height: 100px;">9회말2아웃</a>
+   <img src="image/로고1.png" style="max-width: 800px; max-height: 200px; padding-left:300px"></a>
+   
+   <div style="float: right; padding-right:80px">
+   	<b style="color:white; font-size:30px;">???님</b><br>
+    	<button type="button" class="btn btn-danger btn-sm" id="myshop" style="font-size:30px;">장바구니</button>
+    	<button type="button" class="btn btn-danger btn-sm" id="mypage" style="font-size:30px;">마이페이지</button>
+   </div>
    
      
   
