@@ -1,5 +1,3 @@
-<%@page import="java.util.Date"%>
-<%@page import="baseball_Semi.MyCalendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,144 +5,62 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- datepicker 는 jquery 1.7.1 이상 bootstrap 2.0.4 이상 버전이 필요함 -->
+<!-- jQuery가 먼저 로드 된 후 datepicker가 로드 되어야함.-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+<link rel="stylesheet" href="resources/css/plugin/datepicker/bootstrap-datepicker.css">
 
-<!-- 스타일 적용시켜주기 -->
-<style type="text/css">
-/* 기본스타일  */	
-	table{ background-color: #F2F2F2;}
-	
-	tr{height: 60px;}
-	td{width: 100px; text-align: right; font-size: 15pt; font-family: D2coding;}
-/* 타이틀 스타일 */
-	th#title {font-size: 20pt; font-weight: bold; color: #00ff00; font-family: D2coding; }
-
-/* 요일 스타일 */
-	td.sunday{ text-align: center; font-weight: bold; color: red; font-family: D2coding; }
-	td.saturday{ text-align: center; font-weight: bold; color: blue; font-family: D2coding; }
-	td.etcday{ text-align: center; font-weight: bold; color: black; font-family: D2coding; }
-
-/* 날짜 스타일 */
-	td.sun{ text-align: right; font-size: 15pt; color: red; font-family: D2coding; vertical-align: top;}
-	td.sat{ text-align: right; font-size: 15pt; color: blue; font-family: D2coding; vertical-align: top;}
-	td.etc{ text-align: right; font-size: 15pt; color: black; font-family: D2coding; vertical-align: top;}
-	
-	td.redbefore{ text-align: right; font-size: 12pt; color: red; font-family: D2coding; vertical-align: top;}
-	td.before{ text-align: right; font-size: 12pt; color: gray; font-family: D2coding; vertical-align: top;}
-	
-
-</style>
-
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
+<!-- 우선 body 부분에 input tag를 하나 만들어준다. -->
 <body>
-<%
-// 컴퓨터 시스템의 년, 월 받아오기
-	Date date = new Date();
-	int year = date.getYear() +1900;
-	int month = date.getMonth() +1;
-
-	//	오류사항 걸러주기	
-	try{
-		year = Integer.parseInt(request.getParameter("year"));
-		month = Integer.parseInt(request.getParameter("month"));
-		
-		if(month>=13){
-			year++;
-			month =1;
-		}else if(month <=0){
-			year--;
-			month =12;
-		}
-	}catch(Exception e){
-		
-	}
-
-%>
-<!-- 달력 만들기 -->
-<table width ="700" align ="center" border ="1" cellpadding="5" cellspacing="0">
-	<tr>
-<!-- 이전달 버튼 만들기 -->
-		<th>
-		<%-- <a href ="?year=<%=year%>&month=<%month-1%>">이전 달</a> --%>
-		<input type="button" value="이전 달" onclick="location.href='?year=<%=year%>&month=<%=month-1%>'">
-		</th>
-		
-<!-- 제목 만들기 -->
-		<th id = "title" colspan = "5" >
-		<%=year%>년  <%=month%>월
-		</th>
-		
-<!-- 다음달 버튼 만들기 -->
-		<th>
-		<%-- <a href ="?year=<%=year%>&month=<%month+1%>">다음 달</a> --%>
-		<input type="button" value="다음 달" onclick="location.href='?year=<%=year%>&month=<%=month+1%>'">
-		
-		</th>
-	</tr>
-<!-- 요일 표시칸 만들어주기(단, 토,일요일은 색을 다르게 하기위해 구분해주기) -->
-	<tr>
-		<td class = "sunday">일</td>
-		<td class = "etcday">월</td>
-		<td class = "etcday">화</td>
-		<td class = "etcday">수</td>
-		<td class = "etcday">목</td>
-		<td class = "etcday">금</td>
-		<td class = "saturday">토</td>
-	</tr>
-	
-<!-- 날짜 집어 넣기 -->
-	<tr>
-	<%
-//	1일의 요일을 계산한다(자주 쓰이기 때문에 변수로 선언해두기)
-		int first = MyCalendar.weekDay(year, month, 1);
-	
-//	1일이 출력될 위치 전에 전달의 마지막 날짜들을 넣어주기위해 전 달날짜의 시작일을 계산한다.
-		int start = 0 ;
-		start = month ==1? MyCalendar.lastDay(year-1, 12)- first : MyCalendar.lastDay(year, month-1)- first;
-
-//	1일이 출력될 위치를 맞추기 위해 1일의 요일만큼 반복하여 전달의날짜를 출력한다.
-		for(int i= 1; i<= first; i++){
-			if(i==1){
-/* 일요일(빨간색)과 다른날들의 색을 구별주기  */
-				out.println("<td class = 'redbefore'>"+(month ==1? 12 : month-1)+"/"+ ++start +"</td>");
-			}else{
-				out.println("<td class = 'before'>"+(month ==1? 12 : month-1)+"/"+ ++start +"</td>");
-				
-			}
-		}
-
-/* 1일부터 달력을 출력한 달의 마지막 날짜까지 반복하며 날짜를 출력 */
-		for(int i = 1; i <= MyCalendar.lastDay(year, month); i++){
-			/* 요일별로 색깔 다르게 해주기위해 td에 class 태그걸어주기 */
-			switch(MyCalendar.weekDay(year, month, i)){
-				case 0 :
-					out.println("<td class ='sun'>" +i +"</td>");
-					break;
-				case 6 :
-					out.println("<td class ='sat'>" +i +"</td>");
-					break;
-				default :
-					out.println("<td class ='etc'>" +i +"</td>");
-					break;
-			}
-			
-/* 출력한 날짜(i)가 토요일이고 그달의 마지막 날짜이면 줄을 바꿔주기 */
-			if(MyCalendar.weekDay(year, month, i) == 6 && i != MyCalendar.lastDay(year, month)){
-				out.println("</tr><tr>");			
-			}
-		}
-		if(MyCalendar.weekDay(year, month, MyCalendar.lastDay(year, month)) !=6){
-			for(int i = MyCalendar.weekDay(year, month, MyCalendar.lastDay(year, month))+1; i < 7; i++){
-				out.println("<td></td>");	
-			}
-		}
-
-	%>
-	</tr>
-	
-</table>
-
+   <!-- 시작시 기본 날짜 설정은 value를 이용 -->
+   <input type="text" id="datePicker" class="form-control" value="2019-06-27" />
+   
 </body>
+
+<script>
+   $('#datePicker')
+      .datepicker({
+         format: 'yyyy-mm-dd', //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
+         startDate: '-10d', //달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
+         endDate: '+10d', //달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
+         autoclose: true, //사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
+         calendarWeeks: false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
+         clearBtn: false, //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
+         datesDisabled: ['2019-06-24', '2019-06-26'], //선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
+         daysOfWeekDisabled: [0, 6], //선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
+         daysOfWeekHighlighted: [3], //강조 되어야 하는 요일 설정
+         disableTouchKeyboard: false, //모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
+         immediateUpdates: false, //사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false
+         multidate: false, //여러 날짜 선택할 수 있게 하는 옵션 기본값 :false
+         multidateSeparator: ',', //여러 날짜를 선택했을 때 사이에 나타나는 글짜 2019-05-01,2019-06-01
+         templates: {
+            leftArrow: '&laquo;',
+            rightArrow: '&raquo;',
+         }, //다음달 이전달로 넘어가는 화살표 모양 커스텀 마이징
+         showWeekDays: true, // 위에 요일 보여주는 옵션 기본값 : true
+         title: '테스트', //캘린더 상단에 보여주는 타이틀
+         todayHighlight: true, //오늘 날짜에 하이라이팅 기능 기본값 :false
+         toggleActive: true, //이미 선택된 날짜 선택하면 기본값 : false인경우 그대로 유지 true인 경우 날짜 삭제
+         weekStart: 0, //달력 시작 요일 선택하는 것 기본값은 0인 일요일
+         language: 'ko', //달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
+      })
+      .on('changeDate', function (e) {
+         /* 이벤트의 종류 */
+         //show : datePicker가 보이는 순간 호출
+         //hide : datePicker가 숨겨지는 순간 호출
+         //clearDate: clear 버튼 누르면 호출
+         //changeDate : 사용자가 클릭해서 날짜가 변경되면 호출 (개인적으로 가장 많이 사용함)
+         //changeMonth : 월이 변경되면 호출
+         //changeYear : 년이 변경되는 호출
+         //changeCentury : 한 세기가 변경되면 호출 ex) 20세기에서 21세기가 되는 순간
+
+         console.log(e);
+         // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시) 위와 같은 형태로 보인다.
+      });
+</script>
+
 </html>
