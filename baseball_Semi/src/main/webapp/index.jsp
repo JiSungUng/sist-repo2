@@ -38,6 +38,19 @@ div.main{
 	left: 350px;
 	padding-left: 100px;
 }
+
+div.nav{
+	width: 100%;
+	height: 80px;
+	font-size: 25pt;
+	top: 25px;
+	text-align: center;
+
+}
+div.footer{
+width: 100%;
+text-align:center;
+}
 </style>
 </head>
 <%
@@ -56,6 +69,16 @@ div.main{
   <jsp:include page="layout/title.jsp"/>
 </div>
 
+<div class="layout main">
+    <jsp:include page="<%=mainPage%>"/>
+</div>
+<div class="layout footer">
+    <jsp:include page="layout/footer.jsp"/>
+</div>
+
+<div class="layout nav">
+    <jsp:include page="layout/nav.jsp"/>
+</div>
 
 
 
