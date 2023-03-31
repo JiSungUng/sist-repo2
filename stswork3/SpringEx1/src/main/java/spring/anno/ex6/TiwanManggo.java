@@ -2,13 +2,14 @@ package spring.anno.ex6;
 
 import org.springframework.stereotype.Component;
 
-@Component("pmanggo")
-public class philipinManggo implements Manggo {
+@Component
+public class TiwanManggo implements Manggo {
 
 	@Override
 	public void writeManngoName() {
 		// TODO Auto-generated method stub
-System.out.println("ÇÊ¸®ÇÉ¸Á°í");
+
+		System.out.println("ÅÂ±¹¿Õ±¹");
 	}
 
 }

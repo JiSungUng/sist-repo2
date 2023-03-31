@@ -1,7 +1,6 @@
 package spring.anno.ex6;
 
 public interface Manggo {
-	public void writeManngoName(){
-		
-}
+	
+	public void writeManngoName();
 }
