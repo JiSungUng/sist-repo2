@@ -15,13 +15,8 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 </head>
 <body>
-<h2>매핑주소로 이동</h2>
-	
-	<ul>
-		<li><a href="happy">resource 이미지 출력(아무거나 하나)  happy.jsp 출력할것</a></li>
-		<li><a href="hello">msg값 전달.. 그 아래  이미지 출력(아무거나 하나) hello.jsp에 출력</a></li>
-		<li><a href="nice/hi">name,addr값 전달 nice.jsp</a></li>
-		<li><a href="data/myform">입력폼</a></li>
-	</ul>
+	<h2>2번 폼으로 입력한 값</h2>
+	상품명: ${dto.sang }<br>
+	상품명: ${dto.price }<br>
 </body>
 </html>
