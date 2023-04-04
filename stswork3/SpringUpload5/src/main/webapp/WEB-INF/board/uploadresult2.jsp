@@ -15,6 +15,9 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 </head>
 <body>
-	
+	<h2>제목:${title }</h2>
+	<c:forEach var="im" items="${files }">
+	<img alt="" src="../photo/${im }" style="max-width:200px; border:1px solid gray">
+	</c:forEach>
 </body>
 </html>
