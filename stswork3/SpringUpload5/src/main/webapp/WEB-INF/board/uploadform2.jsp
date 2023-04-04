@@ -15,6 +15,29 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 </head>
 <body>
+	<form action="upload2" method="post" enctype="multipart/form-data">
+	<table class="talbe table-bordered" style="width:400px;">
+	<caption><b>스프링 파일업로드(파일 여러개)</b></caption>
+	<tr>
+		<th bgcolor="orange" width="100">제목</th>
+		<td><input type="text" name="title" class="form-control"
+		style="width:150px;"></td>
+	</tr>
 	
+	<tr>
+		<th bgcolor="orange" width="100">제목</th>
+		<td><input type="file" name="photo" class="form-control"
+		style="width:100px;" multiple="multiple"></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2" align="center">
+		<button type="submit" class="btn btn-info">업로드#1</button>
+		</td>
+	</tr>
+	
+	</table>
+		
+	</form>
 </body>
 </html>
