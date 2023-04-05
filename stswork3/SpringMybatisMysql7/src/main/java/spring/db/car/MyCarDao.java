@@ -40,9 +40,9 @@ public class MyCarDao {
 		
 		session.update("updateOfMyar", dto);
 	}
-	
-	public void deleteMyCar(MyCarDto dto) {
-		session.delete("deleteOfMycar",dto);
+	//ªË¡¶
+	public void deleteMyCar(String num) {
+		session.delete("deleteOfMycar",num);
 	}
 	
 }

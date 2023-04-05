@@ -74,9 +74,9 @@ public class CarController {
 		}
 		
 		@GetMapping("/samsung/delete")
-		public String delete(@ModelAttribute MyCarDto dto) {
+		public String delete(@RequestParam String num) {
 			
-			dao.deleteMyCar(dto);
+			dao.deleteMyCar(num);
 			
 			return "redirect:list";
 		}

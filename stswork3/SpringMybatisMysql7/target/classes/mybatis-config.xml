@@ -6,5 +6,7 @@
 <configuration>
 <typeAliases>
  <typeAlias alias="CarDto" type="spring.db.car.MyCarDto"/>
+ 
+ <typeAlias alias="MemberDto" type="spring.db.member.CarMemberDto"/>
 </typeAliases>
 </configuration>
