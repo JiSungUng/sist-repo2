@@ -15,38 +15,31 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 </head>
 <body>
-	<h3 class="alert alert-warning">Ex2 예제</h3>
+	<h3 class="alert alert-warning">Ex3 예제</h3>
 	<br>
-	<button type="button" id="btn2" class="btn btn warning">list2 json배열데이타출력하기</button>
-	<div id="out3"></div>
-	
-	
+	<h4>그림 번호 입력후 엔터를 눌러주시요</h4>
+<input type="text" id="search" calss="form-control" style="width:130px;">	
+	<br><br>
 	<script type="text/javascript">
-	$("#btn3").click(function(){
+	$("#search").keyup(function(e){
+		if(e.keyCode==13){
+			
+		var name=$(this).val();
+		
 		$.ajax({
 			
 			type:"get",
 			dataType:"json",
 			url:"list3",
+			data:{"name":name},
 			success:function(res){
-				
-				
-				var s="";
-				$.each(res,function(i,elt){
-					
-					s+="<figure>";
-					s+="<img src='upload/"+elt.photo+"'width=150px>";
-					s+="<figcaption><b>";
-					s+=elt.name;
-					s+="</b></figcation>";
-					s+="</figure>";
-					
-				});
-				
-			$("#out3").html(s);	
+				$("#fname").text(res.name);
+				$("#photo").attr("src","upload/"+res.photo);
+				$("#search").val('');//입력값  지우기
 			}
 			
 		});
+		}
 	});
 	
 	</script>
