@@ -25,4 +25,10 @@ public class StartController {
 		return "ex2";
 	}
 	
+	@GetMapping("/jsonex3")
+	public String ex3() {
+		
+		return "ex3";
+	}
+	
 }
