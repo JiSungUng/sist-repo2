@@ -8,5 +8,9 @@
  <typeAlias alias="CarDto" type="spring.db.car.MyCarDto"/>
  
  <typeAlias alias="MemberDto" type="spring.db.member.CarMemberDto"/>
+ 
+ 
+ <typeAlias alias="sdto" type="sawon.data.SawonDto"/>
+ 
 </typeAliases>
 </configuration>
