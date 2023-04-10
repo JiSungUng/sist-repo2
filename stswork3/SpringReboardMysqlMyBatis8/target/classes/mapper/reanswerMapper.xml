@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reanswer">
+
+<!-- <select id="getTotalcountOfReanswer" resultType="int">
+		select count(*) from reanswer
+	</select> -->
+
+	<!-- insert:원글,새글 모두 해당 -->
+	<insert id="insertOfReanswer" parameterType="redto">
+	insert into reanswer (num,nickname,pass,content,writeday) values (#{num},#{nickname},#{pass},#{content},now())
+	</insert>
+</mapper> 
