@@ -15,6 +15,9 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 </head>
 <body>
-	비밀번호fial
+	<script type="text/javascript">
+	alert("비밀번호가 맞지 않아요");
+	history.back();
+	</script>
 </body>
 </html>
