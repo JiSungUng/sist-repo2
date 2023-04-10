@@ -2,6 +2,7 @@ package reboard.data.model;
 
 import java.util.List;
 
+
 public interface ReboardDaoInter {
 	
 	public int getTotalCount();
