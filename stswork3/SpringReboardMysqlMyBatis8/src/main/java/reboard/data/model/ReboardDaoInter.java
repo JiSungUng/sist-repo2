@@ -9,4 +9,9 @@ public interface ReboardDaoInter {
 	public void updateRestep(int regroup , int restep);
 	public void insertReboard(ReboardDto dto); 
 	public List<ReboardDto> getList(int start,int perpage);
-}
+	public void updateReadcount(int num);
+	public ReboardDto getData(int num);
+	public int getCheckPass(int num,int pass);
+	public void deleteBoard(int num);
+	void updateReBoard(ReboardDto dto);
+	}
