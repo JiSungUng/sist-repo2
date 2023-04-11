@@ -1,9 +1,13 @@
 package reanswer.data.model;
 
-import reboard.data.model.ReboardDto;
+import java.util.List;
+
 
 public interface ReanswerDaoInter {
 	
 	public void insertReanswer(ReanswerDto dto); 
+	public List<ReanswerDto> getAnswerList(int num);
+	public int getCheckPass(int idx,String pass);
+	public void deletAnswer(int idx);
 
 }

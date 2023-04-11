@@ -9,10 +9,16 @@ public class ReanswerDto {
 	private String nickname;
 	private String pass;
 	private String content;
-	private Timestamp wirteday;
+	private Timestamp writeday;
 	
 	public int getIdx() {
 		return idx;
+	}
+	public Timestamp getWriteday() {
+		return writeday;
+	}
+	public void setWriteday(Timestamp writeday) {
+		this.writeday = writeday;
 	}
 	public void setIdx(int idx) {
 		this.idx = idx;
@@ -41,11 +47,6 @@ public class ReanswerDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Timestamp getWirteday() {
-		return wirteday;
-	}
-	public void setWirteday(Timestamp wirteday) {
-		this.wirteday = wirteday;
-	}
+	
 	
 }
