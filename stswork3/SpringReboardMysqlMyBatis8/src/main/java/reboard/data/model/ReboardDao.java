@@ -100,5 +100,12 @@ public class ReboardDao implements ReboardDaoInter {
 		session.update("updateOfreboard",dto);
 	}
 	
+	//ajax 출력 문제
+	@Override
+	public List<ReboardDto> getAlldatas() {
+		// TODO Auto-generated method stub
+		return session.selectList("selectAllOfReboard");
+	}
+	
 
 }

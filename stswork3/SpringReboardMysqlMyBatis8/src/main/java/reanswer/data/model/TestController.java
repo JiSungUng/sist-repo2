@@ -29,4 +29,11 @@ public class TestController {
 		
 		return dao.getData(num);
 	}
+	
+	//ajax 출력위해서 단순포워드 매핑 ... list jsp
+	@GetMapping("/rest/list")
+	public String ajaxlist() {
+		
+		return "list";
+	}
 }

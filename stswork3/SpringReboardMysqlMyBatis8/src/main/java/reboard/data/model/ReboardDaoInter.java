@@ -14,5 +14,8 @@ public interface ReboardDaoInter {
 	public ReboardDto getData(int num);
 	public int getCheckPass(int num,int pass);
 	public void deleteBoard(int num);
-	void updateReBoard(ReboardDto dto);
+	public void updateReBoard(ReboardDto dto);
+	
+	//ajax¿ß«— ∞Õ
+	public List<ReboardDto> getAlldatas();
 	}
