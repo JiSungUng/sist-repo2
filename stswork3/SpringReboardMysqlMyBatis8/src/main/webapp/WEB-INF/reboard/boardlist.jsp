@@ -48,9 +48,17 @@
 						&nbsp;&nbsp;<!-- 2칸 ..원그리염 0이되므로 안돈다. -->
 							</c:forEach> <!-- 답글이면 re 이미지 출력 --> <c:if test="${dto.relevel>0 }">
 								<img alt="" src="../photo/re.png">
-							</c:if> <!-- 제목.. 여기통해서 내용보기로... --> <a
+							</c:if> 
+							<!-- 제목.. 여기통해서 내용보기로... --> <a
 							href="content?num=${dto.num}&currentPage=${currentPage }">${dto. subject}</a>
 
+
+
+							<!-- 댓글개수 출력 -->							
+							<c:if test="${dto.acount>0 }">
+							<a href="content?num=${dto.num }&currentPage=${currentPage}#answer">[${dto.acount }]
+							</a>
+							</c:if>		
 							<!-- 이미지가 있을경우 아이콘 표시 --> <c:if test="${dto.photo!='no'}">
 								<span class="glyphicon glyphicon-picture"></span>
 							</c:if>

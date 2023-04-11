@@ -8,7 +8,20 @@
 	</select> -->
 
 	<!-- insert:원글,새글 모두 해당 -->
-	<insert id="insertOfReanswer" parameterType="redto">
+	<insert id="insertOfReanswer" parameterType="answerdto">
 	insert into reanswer (num,nickname,pass,content,writeday) values (#{num},#{nickname},#{pass},#{content},now())
 	</insert>
+	<select id="getNumAllDatasOfReanswer" parameterType="int" resultType="answerdto">
+	select * from reanswer where num=#{num} order by idx 
+	</select>
+	
+	<select id="getPassCheckOfReanswer" resultType="int" parameterType="HashMap">
+		select count(*) from reanswer where idx=#{idx} and pass=#{pass}
+	</select>
+	
+	
+	
+	<delete id="deleteOfReAnswer" parameterType="int">
+		delete from reanswer where idx=#{idx}
+	</delete>
 </mapper> 
