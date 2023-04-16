@@ -16,9 +16,9 @@
 </head>
 <body>
 	<div style="margin: 50px 200px">
-	<form action="insert" method="post" enctype="multipart/form-data">
+	<form action="update" method="post" enctype="multipart/form-data">
 		<table class="table table-bordered" style="width:500px;">
-		<caption><b>새글쓰기</b></caption>		
+		<caption><b>수정하기</b></caption>		
 		<tr>
 			<th width="120" bgcolor="lightgray">작성자</th>
 			<td>
