@@ -50,8 +50,7 @@
 		<li ><a href="${root }/member/list">회원목록</a></li>
 		<li ><a href="${root }/member/list">회원목록</a></li>
 		<li ><a href="${root }/login/main">로그인</a></li>
-		
-		
+		<li ><a href="${root }/member/myinfo">나의정보</a></li>
 		<li ><a href="${root }/member/form">회원가입</a></li>
 		<li ><a href="${root }/load/map">오시는길</a></li>
 	</ul>
