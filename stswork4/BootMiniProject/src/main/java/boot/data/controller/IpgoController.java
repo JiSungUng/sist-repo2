@@ -103,4 +103,13 @@ public class IpgoController {
       
       return "redirect:list";
    }
+   
+   //오시는길로 가기... 쌍용교육센터 ... sub레이아웃으로 나오게..
+   @GetMapping("/load/map")
+   public String map() {
+	   
+	   
+	   return "/sub/load/map"; 
+   }
+   
 }
