@@ -1,6 +1,7 @@
 package boot.data.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,6 +13,8 @@ public interface MemberMapperInter {
 	public List<MemberDto> getAllMembers();
 	public void insertMember(MemberDto dto);
 	public int getSearchId(String id);
-	
+	public String getName(String id);
+	public int loginIdPassCheck(Map<String, String> map);
+	public MemberDto getDataById(String id);
 	
 }

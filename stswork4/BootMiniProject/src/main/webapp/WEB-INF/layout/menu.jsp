@@ -47,8 +47,13 @@
 		<li ><a href="${root }/ipgo/form">상품등록</a></li>
 		<li ><a href="${root }/ipgo/list">상품목록</a></li>
 		<li ><a href="${root }/board/list">게시판</a></li>
-		<li ><a href="${root }/member/list">회원목록</a></li>
-		<li ><a href="${root }/member/list">회원목록</a></li>
+		
+		<c:if test="${sessionScope.myid == 'admin' }">
+      <li>
+         <a href="${root}/member/list">회원목록</a>
+      </li>
+      </c:if>
+		
 		<li ><a href="${root }/login/main">로그인</a></li>
 		<li ><a href="${root }/member/myinfo">나의정보</a></li>
 		<li ><a href="${root }/member/form">회원가입</a></li>

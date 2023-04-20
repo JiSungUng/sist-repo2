@@ -23,13 +23,13 @@
       div.layout div.title {
          position: absolute;
          top:10px;
-         left: 800px;
+         left: 630px;
          height: 100px;
       }
       
       div.layout div.menu {
          position: absolute;
-         top:150px;
+         top:250px;
          left: 400px;
          height: 100px;
       }
@@ -43,7 +43,7 @@
       
       div.layout div.main {
          position: absolute;
-         top:250px;
+         top:350px;
          left: 550px;
          height: 800px;
       }
