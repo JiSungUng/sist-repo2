@@ -14,19 +14,15 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 </head>
+   <c:set var="root" value="<%=request.getContextPath()%>" />
 <body>
-	<c:set var="root" value="<%=request.getContextPath()%>" />
-	<c:if test="${sessionScope.loginok==null }">
-	<img alt="" src="">
-	</c:if>
-	
-	
-	<span class="glyphicon glyphicon-envelope">email</span>&nbsp;dnfl3455@naver.com
-	<br>
-	<span class="glyphicon glyphicon-cog"></span>쌍용교육센터
-	<br>
-	<a href=""> <img alt="" src="../image/12.png" style="width:100px;">
-	</a>
-	<img alt="" src="../image/13.png" style="width:100px;">
+<div style="margin-left:100px; margin-top:100px">
+   <img alt="" src="${root }/image/03.png" width="200" align="left" hspace="20">
+   <br><br>
+   <!-- id 통한 이름받아서 표시 -->
+   
+   <button type="button" class="btn btn-danger"
+   onclick="location.href='logoutprocess'">로그아웃</button>
+</div>
 </body>
 </html>
