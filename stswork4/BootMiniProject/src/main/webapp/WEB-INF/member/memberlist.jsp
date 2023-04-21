@@ -10,8 +10,63 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+    $(function(){
+    	
+    	//전체선택하면 체크박스 선택
+    	$("#allcheck").click(function(){
+    		
+    		//체크값 어기
+    		var chk=$(this).is(":checked");
+    		
+    		//전체체크값을 아래의 체크에 일괄전달
+    		$(".del").prop("checked",chk);
+    		
+    	});
+    	$("#btnmemberdel").click(function(){
+    		
+    		//체크한 상품 개수 구하기
+    		var cnt=$(".del:checked").length;
+    		
+    		if(cnt==0){
+    			alert("먼저 삭제번호를 선택해주세요");
+    			return; //종료
+    			
+    		}
+    		$(".del:checked").each(function(i,elt){
+    		
+    			var num=$(this).attr("num");
+    			
+    			//삭제 ajax
+    			$.ajax({
+    				type:"get",
+    				url:"delete",
+    				dataType:"html",
+    				data:{"num":num},
+    				success:function(){
+    					alert("삭제되었습니다.");
+    					//새로고침
+    					location.reload();
+    				}
+    			});
+    			
+    		});
+    		
+    	});
+    });
+    </script>
 </head>
 <body>
+
+<!-- Buttons -->
+<button type="button" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Links -->
+<a data-toggle="modal" href="#myModal">Open Modal</a>
+
+<!-- Other elements -->
+<p data-toggle="modal" data-target="#myModal">Open Modal</p>
+
 	<h2 class="alert alert-info">총 ${count }명의 회원이 있습니다</h2>
 	<br>
 	<table class="table table-bordered" style="width: 800px;">
