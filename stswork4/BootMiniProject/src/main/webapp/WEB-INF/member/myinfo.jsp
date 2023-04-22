@@ -79,10 +79,10 @@
 					<!-- 수정 삭제 버튼 -->
 					<td rowspan="5" align="center" style="width: 200px; vertical-align: middle;">
 						<button type="button" class="btn btn-default"
-						onclick="location.href=''">수정</button>	
+						onclick="location.href='update'">수정</button>	
 					
 						<button type="button" class="btn btn-default"
-						onclick="location.href=''">삭제</button>	
+						onclick="location.href='delete'">삭제</button>	
 					</td>
 				</tr>
 				
