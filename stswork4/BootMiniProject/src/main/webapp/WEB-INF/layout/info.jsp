@@ -1,32 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>Insert title here</title>
-<link
-	href="https://fonts.googleapis.com/css2?family=Anton&family=Edu+VIC+WA+NT+Beginner:wght@600&family=Gamja+Flower&family=Single+Day&family=Jua&family=Nanum+Pen+Script&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<c:set var="root" value="<%=request.getContextPath()%>" />
+	<c:set var="root" value="<%=request.getContextPath() %>"/>
+	
 	<c:if test="${sessionScope.loginok==null }">
-	<img alt="" src="">
+		<img alt="" src="${root }/image/19.jpg" style="width: 130px; height:130px;"
+		class="img-circle">
+	</c:if>
+	
+	<c:if test="${sessionScope.loginok!=null }">
+		<img alt="" src="${root }/photo/${sessionScope.loginphoto}" style="width: 130px; height:130px;"
+		class="img-circle">
 	</c:if>
 	
 	
-	<span class="glyphicon glyphicon-envelope">email</span>&nbsp;dnfl3455@naver.com
-	<br>
-	<span class="glyphicon glyphicon-cog"></span>쌍용교육센터
-	<br>
-	<a href=""> <img alt="" src="../image/12.png" style="width:100px;">
-	</a>
-	<img alt="" src="../image/13.png" style="width:100px;">
+	<span class="glyphicon glyphicon-envelope">email</span>&nbsp;sist@gmail.com<br>
+	<span class="glyphicon glyphicon-cog"></span>&nbsp;쌍용교육센터<br>
+	<a href="">
+		<img alt="" src="../image/insta.jpg" style="width: 20px;">&nbsp;쌍용교육센터
+	</a>	
+	<img alt="" src="../image/#.png" style="width: 200px;">
 </body>
 </html>
