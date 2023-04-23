@@ -22,7 +22,7 @@
 	  $("#newphoto").change(function(){
 		  
 		  var num=$(this).attr("num");
-		//  alert(num);
+		  alert(num);
 		  
 		var form = new FormData();
 		form.append("photo",$("#newphoto")[0].files.[0]);//선택한 1개만 반드시 추가.
@@ -52,6 +52,9 @@
 	   
 	   $.ajax({
 		  type: 
+			  dataType:
+				 url:
+					 
 	   });
    });
    
