@@ -19,36 +19,42 @@ public class LoginController {
 	MemberService service;
 	
 	@GetMapping("/login/main")
-	public String loginform(HttpSession session,Model model) {
-		
+	public String loginform(HttpSession session,Model model)
+	{
 		//폼의 아이디를 얻어줌
 		String myid=(String)session.getAttribute("myid");
-		//로그인 상태인지 아닌지
+		//로그인상태인지 아닌지
 		String loginok=(String)session.getAttribute("loginok");
+		
 		
 		//한번도 실행안하면 null
 		if(loginok==null)
-			return"/login/loginform";
-		else {//로그인중일때 request에 로그인한 이름 저장하기
+			return "/login/loginform";
+		else {
+			
+			//로그인중일때 requset에 로그인한 이름저장하기
 			String name=service.getName(myid);
-			model.addAttribute("name",name);
+			model.addAttribute("name", name);
 			return "/login/logoutform";
 		}
 		
 		
 	}
-
+	
+	
+	
 	@PostMapping("/login/loginprocess")
 	public String loginproc(@RequestParam String id,
 			@RequestParam String pass,
-			@RequestParam (required=false) String cbsave,
-			HttpSession session,
-			Model model) {
-		//id와 papss 받기
+			@RequestParam(required = false) String cbsave,
+			HttpSession session,Model model)
+	{
 		
-		int check = service.loginIdPassCheck(id, pass);
+		//id와 pass받기
+		int check=service.loginIdPassCheck(id, pass); //1 or 0
 		
-		if(check==1) {
+		if(check==1) {  //로그인 성공시
+			
 			session.setMaxInactiveInterval(60*60*8);
 			
 			session.setAttribute("myid", id);
@@ -59,15 +65,28 @@ public class LoginController {
 			MemberDto dto=service.getDataById(id);
 			
 			session.setAttribute("loginphoto", dto.getPhoto());
+			
 			return "redirect:main";
-		}else {
+			
+		}else {  //로그인 실패시
+			
 			return "/member/passfail";
 		}
 		
+		
 	}
+	
+	
 	@GetMapping("/login/logoutprocess")
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session)
+	{
 		session.removeAttribute("loginok");
 		return "redirect:main";
 	}
+	
+	
+	
+	
+	
+	
 }
