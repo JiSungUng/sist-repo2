@@ -1,6 +1,6 @@
 #tomcat port
 server:
-  port: 9003
+  port: 9004
  
 #jsp
 spring:
