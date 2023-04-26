@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import boot.data.dto.BoardDto;
+import boot.data.service.BoardAnswerService;
 import boot.data.service.BoardService;
 import boot.data.service.MemberService;
 import lombok.ToString;
@@ -30,6 +31,9 @@ public class BoardController {
    BoardService service;
    @Autowired
    MemberService mservice;
+   
+   @Autowired
+   BoardAnswerService aservice;
    
    /*
     * @GetMapping("/board/list") public ModelAndView boardlist() { ModelAndView
@@ -100,6 +104,8 @@ public class BoardController {
       return model;
    }
    
+   
+   
    @GetMapping("/board/list")
     public ModelAndView list(@RequestParam (value="currentPage", defaultValue = "1")int currentPage) {
         ModelAndView model=new ModelAndView();
@@ -130,19 +136,18 @@ public class BoardController {
 
         //각 페이지에서 필요한 게시글 가져오기
         List<BoardDto> list=service.getlist(start, perPage);
-
-        //각 페이지에 출력할 시작번호
-        int no=totalCount-(currentPage-1)*perPage;
         
-        //출력에 필요한 변수들을 model에 저장
-        model.addObject("totalCount", totalCount);
-        model.addObject("list", list);
-        model.addObject("totalPage", totalPage);
-        model.addObject("startPage", startPage);
-        model.addObject("endPage", endPage);
-        model.addObject("perBlock", perBlock);
-        model.addObject("currentPage", currentPage);
-        model.addObject("no", no);
+        //list에 각글에 대한 댓글 개수 추가하기
+        
+        //댓글추가
+        
+        for(BoardDto d:list) {
+        	d.setAcount(aservice.getAllAnswers(d.getNum()).size());
+        	
+        }
+        
+
+       
         model.setViewName("/board/boardlist");
         return model;
     }
