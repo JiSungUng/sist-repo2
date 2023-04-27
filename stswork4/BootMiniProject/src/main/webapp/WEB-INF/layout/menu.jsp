@@ -60,7 +60,7 @@
 		</li>
 		
 		<li>
-			<a href="${root }/smart/list">스게판</a>
+			<a href="${root }/smart/list">스마트</a>
 		</li>
 		
 		<c:if test="${sessionScope.loginok!=null && sessionScope.myid=='admin' }">
