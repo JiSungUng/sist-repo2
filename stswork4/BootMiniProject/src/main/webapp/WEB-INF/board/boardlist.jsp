@@ -13,7 +13,30 @@
 <script
    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
+<div class="searcharea" style="width:800px; margin:10px 100px">
+<!-- 검색창 -->
+<form action="list">
+<div>
+<select class="form-control" style="width:150px;" name="searchcolumn">
+<option>제목</option>
+<option>작성자</option>
+<option>내용</option>
+
+</select>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="searchword" class="form-control" style="width:200px;"
+placeholder="검색어를 입력하세요">
+<button type="submit" class="btn btn-success">검색</button>
+</div>
+
+</form>
+
+</div>
+
+
    <c:if test="${sessionScope.loginok!=null }">
       <button type="button" class="btn btn-info"
          style="width: 100px; margin-left: 900px;"
