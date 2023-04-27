@@ -35,7 +35,7 @@
 	<!-- 레이아웃2 -->
 	<definition name="/sub/*/*" extends="layout2">
 	   <put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
-	</definition>
+	</definition>	
 	
 	
 </tiles-definitions>
