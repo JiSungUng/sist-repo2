@@ -34,6 +34,14 @@
 		</tr>
 		
 		<tr>
+		 <th width="120" bgcolor="#ddd">동영상</th>
+		 <td>
+		 <input type="file" name="upload" class="form-control">
+		 </td>
+		</tr>
+		
+		
+		<tr>
 		<td colspan="2" align="center">
 			<textarea style="width:490px; height:150px;" name="content"
 			class="form-control" required="required"></textarea>

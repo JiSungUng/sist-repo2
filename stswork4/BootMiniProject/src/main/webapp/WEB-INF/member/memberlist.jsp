@@ -67,7 +67,7 @@
 </script>
 </head>
 <body>
-<h2 class="alert alert-info">총 ${count }명의 회원이 있습니다</h2>
+<h2 class="alert alert-info">총 ${count }명의 회원이 있습니다.</h2>
 <br>
 <table class="table table-bordered" style="width: 1000px;">
   <caption><b>전체 회원명단</b></caption>
