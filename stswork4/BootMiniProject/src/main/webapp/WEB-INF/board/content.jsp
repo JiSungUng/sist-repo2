@@ -148,6 +148,7 @@ function list(){
     <div class="modal-dialog">
     
       <!-- Modal content-->
+      <!-- 댓글 수정 -->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
