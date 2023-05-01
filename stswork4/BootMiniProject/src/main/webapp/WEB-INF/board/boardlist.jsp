@@ -74,6 +74,7 @@ placeholder="검색어를 입력하세요">
                   <a href="content?num=${a.num }&currentPage=${currentPage}" style="color: black">${a.subject }
                      
                      <c:if test="${a.acount>0 }">
+                     <!-- 고치기 -->
                      <a href="content?num=${a.num }&currentPage=${currentPage}" style="color: red">[${ a.acount}]</a>
                      </c:if>
                      
