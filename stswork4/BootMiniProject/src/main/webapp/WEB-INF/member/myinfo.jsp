@@ -86,7 +86,6 @@
 		  var updateaddr=$("#updateaddr").val();
 		  
 		  var data="num="+updatenum+"&name="+updatename+"&hp="+updatehp+"&email="+updateemail+"&addr="+updateaddr;
-		  console.log(data);
 		  
 		  
 		  $.ajax({
